@@ -3,8 +3,9 @@ const path = require("path");
 const app = express();
 const { engine } = require("express-handlebars");
 
-const homeRouter = require("./routes/home");
 const errorController = require("./controllers/ErrorController");
+const adminRouter = require("./routes/admin");
+const shopRouter = require("./routes/pelicula");
 
 //? render engine configuration
 app.engine(
@@ -24,13 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 //Mejor manejo de rutas
-app.use(homeRouter.Router);
-
-
-// app.use((req, res, next) => {
-//   res.status(404).render("404", { layout: false, title: "404 page not found" });
-// });
+app.use("/admin",adminRouter);
+app.use(shopRouter);
 
 app.use("/", errorController.Get404);
 
-app.listen(3000);
+app.listen(4012);
