@@ -5,7 +5,7 @@ const { engine } = require("express-handlebars");
 
 const errorController = require("./controllers/ErrorController");
 const adminRouter = require("./routes/admin");
-const shopRouter = require("./routes/pelicula");
+const peliRouter = require("./routes/pelicula");
 
 //? render engine configuration
 app.engine(
@@ -26,8 +26,9 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //Mejor manejo de rutas
 app.use("/admin",adminRouter);
-app.use(shopRouter);
+app.use(peliRouter);
 
 app.use("/", errorController.Get404);
 
-app.listen(4012);
+app.listen(3000);
+

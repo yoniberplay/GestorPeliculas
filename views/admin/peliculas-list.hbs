@@ -1,0 +1,42 @@
+<main>
+  {{#if hasPeliculas}}
+  
+    <h1>Lista de Peliculas</h1>
+
+    <div class="row">
+      {{#each peliculas}}
+
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="{{this.imageUrl}}"
+              class="card-img-top"
+              alt="{{this.title}}"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{this.title}} - ${{this.genero}}</h5>
+              <p class="card-text">{{this.description}}</p>
+              <a
+                href="edit-pelicula/{{this.id}}?edit=true"
+                class="btn btn-primary"
+              >edit</a>
+
+              <form action="/admin/delete-pelicula" method="post">
+
+                <input type="hidden" name="peliculaId" value="{{this.id}}" />
+                <button class="btn btn-primary">delete</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      {{/each}}
+    </div>
+  {{else}}
+
+    <h1>No peliculas found!</h1>
+
+  {{/if}}
+
+</main>

@@ -15,7 +15,7 @@ exports.GetIndex = (req, res, next) => {
 exports.GetPeliculas = (req, res, next) => {
   //arrow functions
   PeliculasModel.GetAll(function (peliculas) {
-    res.render("peliculas/product-list", {
+    res.render("peliculas/peliculas-list", {
       pageTitle: "Peliculas",
       peliculas: peliculas,
       hasPeliculas: peliculas.length > 0,
@@ -24,33 +24,32 @@ exports.GetPeliculas = (req, res, next) => {
   });
 };
 
-// exports.GetCart = (req, res, next) => {
-//   //arrow functions
-//   res.render("shop/cart", {
-//     pageTitle: "Cart",
-//     CartActive: true,
-//   });
-// };
+exports.GetCart = (req, res, next) => {
+  //arrow functions
+  res.render("peliculas/cart", {
+    pageTitle: "Cart",
+    CartActive: true,
+  });
+};
 
-// exports.GetOrders = (req, res, next) => {
-//   //arrow functions
-//   res.render("shop/orders", {
-//     pageTitle: "Orders",
-//     OrdersActive: true,
-//   });
-// };
+exports.GetOrders = (req, res, next) => {
+  //arrow functions
+  res.render("peliculas/orders", {
+    pageTitle: "Orders",
+    OrdersActive: true,
+  });
+};
 
-// exports.GetCheckout = (req, res, next) => {
-//   //arrow functions
-//   res.render("shop/checkout", {
-//     pageTitle: "Checkout",
-//     CartActive: true,
-//   });
-// };
+exports.GetCheckout = (req, res, next) => {
+  //arrow functions
+  res.render("peliculas/checkout", {
+    pageTitle: "Checkout",
+    CartActive: true,
+  });
+};
 
 exports.GetPelicula = (req, res, next) => {
   const peliculaId = req.params.peliculaId;
-
   //arrow functions
   PeliculasModel.GetById(peliculaId, (pelicula) => {
     res.render("peliculas/pelicula-details", {

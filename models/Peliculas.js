@@ -1,5 +1,7 @@
 const fs = require("fs");
 const path = require("path");
+const { v4 } = require('uuid');
+
 
 const dataPath = path.join(
     path.dirname(require.main.filename),
@@ -14,7 +16,6 @@ const dataPath = path.join(
         callBack([]);
       } else {
         callBack(JSON.parse(data));
-        //console.log(JSON.parse(data));
       }
     });
   };
@@ -30,20 +31,19 @@ module.exports = class Peliculas {
     }
 
     Save() {
-        GetAllProductsFromFile((products) => {
+        GetAllProductsFromFile((peliculas) => {
           if (this.id) {
-            const editProductIndex = products.findIndex(
-              (prod) => prod.id === this.id
-            );
-    
-            products[editProductIndex] = this;
-            fs.writeFile(dataPath, JSON.stringify(products), function (error) {
+            const editPeliIndex = peliculas.findIndex(
+              (peli) => peli.id === this.id
+            ); 
+            peliculas[editPeliIndex] = this;
+            fs.writeFile(dataPath, JSON.stringify(peliculas), (error) => {
               console.log(error);
             });
           } else {
-            this.id = Math.random().toString();
-            products.push(this);
-            fs.writeFile(dataPath, JSON.stringify(products), function (error) {
+            this.id = v4();
+            peliculas.push(this);
+            fs.writeFile(dataPath, JSON.stringify(peliculas), (error) => {
               console.log(error);
             });
           }
@@ -55,6 +55,25 @@ module.exports = class Peliculas {
         GetAllProductsFromFile(cb);
       }
 
+      static GetById(id, cb) {
+        // console.log(id)
+        GetAllProductsFromFile((pelis) => {
+          const peliss = pelis.find((p) => p.id === id);
+          cb(peliss);
+        });
+      }
 
 
+      static Delete(id) {
+        GetAllProductsFromFile((pelis) => {
+
+          const peli = pelis.find((p) => p.id === id);    
+          const newPelisList = pelis.filter((prod) => prod.id !== id);
+    
+          fs.writeFile(dataPath, JSON.stringify(newPelisList),  (error) => {
+            console.log(error);
+          });
+        });
+      }
+      
 }

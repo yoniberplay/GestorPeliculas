@@ -1,71 +1,73 @@
-const Product = require("../models/Peliculas");
+const Peliculas = require("../models/Peliculas");
 
-exports.GetAddProduct = (req, res, next) => {
-  res.render("admin/save-product", {
-    pageTitle: "Add product",
-    AddProductActive: true,
+exports.GetAddPelicula = (req, res, next) => {
+  res.render("admin/save-peliculas", {
+    pageTitle: "Add Pelicula",
+    AddPeliculaActive: true,
     editMode: false,
   });
 };
 
-exports.GetAdminProducts = (req, res, next) => {
-  Product.GetAll(function (products) {
-    res.render("admin/product-list", {
-      pageTitle: "Admin products",
-      AdminProductsActive: true,
-      prods: products,
-      hasProducts: products.length > 0,
+exports.GetAdminPeliculas = (req, res, next) => {
+  Peliculas.GetAll( (peliculas) => {
+    res.render("admin/peliculas-list", {
+      pageTitle: "Admin peliculas",
+      AdminPeliculasActive: true,
+      peliculas: peliculas,
+      hasPeliculas: peliculas.length > 0,
     });
   });
 };
 
-exports.PostAddProduct = (req, res, next) => {
+exports.PostAddPelicula = (req, res, next) => {
   const title = req.body.Title;
   const image = req.body.ImageUrl;
-  const price = req.body.Price;
+  const genero = req.body.genero;
   const description = req.body.Description;
+  const isActive = true;
 
-  const product = new Product(null, title, image, price, description);
-  product.Save();
+  const peliculas = new Peliculas(null, title, image, genero, description,isActive);
+  peliculas.Save();
 
   res.redirect("/");
 };
 
-exports.GetEditProduct = (req, res, next) => {
-  const productId = req.params.productId;
+exports.GetEditPelicula = (req, res, next) => {
+  const peliculaId = req.params.peliculaId;
   const edit = req.query.edit;
 
   if (!edit) {
     return res.redirect("/");
   }
 
-  Product.GetById(productId, (product) => {
-    res.render("admin/save-product", {
-      pageTitle: "edit products",
+  Peliculas.GetById(peliculaId, (pelis) => {  
+    res.render("admin/save-peliculas", {
+      pageTitle: "Editar Pelicula",
       editMode: edit,
-      product: product,
+      pelicula: pelis,
     });
   });
 };
 
-exports.PostEditProduct = (req, res, next) => {
-  const id = req.body.ProductId;
+exports.PostEditPelicula = (req, res, next) => {
+  const id = req.body.peliculaId;
   const title = req.body.Title;
   const image = req.body.ImageUrl;
-  const price = req.body.Price;
+  const genero = req.body.genero;
   const description = req.body.Description;
+  const isActive = req.body.isActive;
 
-  const product = new Product(id,title,image,price,description);
-  product.Save();
+  const isTrueSet = (isActive === 'true');
 
-  res.redirect("/admin/products");
+  const pelicula = new Peliculas(id,title,image,genero,description,isTrueSet ? isTrueSet : false);
+  pelicula.Save();
+
+  res.redirect("/admin/peliculas");
 };
 
-exports.DeleteProduct = (req, res, next) => {
-  const id = req.body.ProductId;
+exports.DeletePelicula = (req, res, next) => {
+  const id = req.body.peliculaId;
+  Peliculas.Delete(id);
 
-
-  Product.Delete(id);
-
-  res.redirect("/admin/products");
+  res.redirect("/admin/peliculas");
 };

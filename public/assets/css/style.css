@@ -5,6 +5,9 @@
   border-color: #7EA9CF;
 }
 
+body{
+  background-color: black;
+}
 
 .bg-grey {
   background-color: rgb(144, 144, 144);

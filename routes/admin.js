@@ -4,15 +4,14 @@ const adminController =require("../controllers/AdminController");
 
 const router = express.Router();
 
-router.get("/add-product", adminController.GetAddProduct);
+router.get("/add-pelicula", adminController.GetAddPelicula);
 
-router.post("/add-product", adminController.PostAddProduct);
+router.post("/add-pelicula", adminController.PostAddPelicula);
+router.get("/peliculas", adminController.GetAdminPeliculas);
 
-router.get("/products", adminController.GetAdminProducts);
+router.get("/edit-pelicula/:peliculaId", adminController.GetEditPelicula); // route params , query params
+router.post("/edit-pelicula", adminController.PostEditPelicula);
 
-router.get("/edit-product/:productId", adminController.GetEditProduct); // route params , query params
-router.post("/edit-product", adminController.PostEditProduct);
-
-router.post("/delete-product", adminController.DeleteProduct);
+router.post("/delete-pelicula", adminController.DeletePelicula);
 
 module.exports = router;
