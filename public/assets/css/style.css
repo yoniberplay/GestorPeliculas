@@ -4,127 +4,29 @@
   border: solid;
   border-color: #7EA9CF;
 }
+.status-circle {
+  margin-left: 0.5rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* Esto establece que el elemento tenga forma de círculo */
+}
 
+/* Estilos para el estado activo */
+.status-circle.active {
+  background-color: green;
+}
+
+/* Estilos para el estado inactivo */
+.status-circle.inactive {
+  background-color: red;
+}
 body{
   background-color: black;
 }
 
-.bg-grey {
-  background-color: rgb(144, 144, 144);
-}
-
-.bg-lightgrey {
-  background-color: rgb(223, 223, 223);
-}
-
-.bg-alcalinos {
-
-  background-color: #C0A0C8;
-
-}
-
-.bg-metaloides {
-
-  background-color: #D5DA62;
-}
-
-.bg-otros-metales {
-
-  background-color: #F4DA3A;
-}
-
-.bg-halogenos {
-
-  background-color: #9DC2C4;
-}
-
-.otros-no-metales {
-
-  background-color: #8CB988;
-}
-
-.bg-gases-nobles {
-
-  background-color: #ACC9E9;
-}
-
-.bg-actinidos {
-
-  background-color: #D7957E;
-}
-
-.bg-lantanidose {
-
-  background-color: #DE9C60;
-}
-
-.bg-metalestransicion {
-
-  background-color: #E8BB54;
-}
-
-
-
-.bg-alcalinoterreos {
-
-  background-color: #D7A1C5;
-}
-
-
-
-.none {
-  display: inline-block;
-  width: 69px;
-  text-align: center;
-  margin: -4px;
-  height: fit-content;
-
-}
-.footerRender {
-
-  width: 115px;
-  height: 90px;
-  border-style: solid;
-  border-color: white;
-
-  display: inline-block;
-  margin: 0px -4px -4px;
-  overflow: auto;
-
-}
-
-.grey {
-
-  display: inline-block;
-  width: 63px;
-  height: 70px;
-  text-align: center;
-  margin: 0px -4px -4px;
-  background-color: rgb(144, 144, 144);
-  border-style: solid;
-  border-color: white;
-
-}
-
-.grey h4 {
-
-  color: rgb(144, 144, 144);
-}
-
-.columnas {
-  display: inline-block;
-  width: 63px;
-  height: 70px;
-  border-style: solid;
-  border-color: white;
-  text-align: center;
-  margin: 0px -4px -4px;
-
-}
 
 .container {
   text-align: center;
-  /* margin-top: 5%; */
 }
 
 
@@ -141,25 +43,33 @@ body{
 
 }
 
+.theme{
+color: white;
+}
+
+input[type="text"]:focus {
+  color: white; 
+  border: 1px solid #555; 
+  outline: none; 
+}
+
 html{
   background-color: #DFEBF7;
 }
 p,
-h4 {
+h4,h5,h6 {
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
-  height: 100%;
-  font-weight: 700;
+  color: white;
   margin: 0px;
   font-family: sans-serif;
 }
 
-h1 {
+h1,h2 {
   text-align: center;
   justify-content: center;
-  margin-bottom: 0%;
   color: #0D4378;
 }
 

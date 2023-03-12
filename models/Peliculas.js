@@ -63,13 +63,19 @@ module.exports = class Peliculas {
         });
       }
 
+      static bygenero(genero, cb) {       
+        GetAllProductsFromFile((pelis) => {
+          let peliss = pelis.filter((p) => p.genero === genero);          
+            console.log(genero)
+            cb(peliss)
+        });
+      }
+
 
       static Delete(id) {
         GetAllProductsFromFile((pelis) => {
-
           const peli = pelis.find((p) => p.id === id);    
-          const newPelisList = pelis.filter((prod) => prod.id !== id);
-    
+          const newPelisList = pelis.filter((prod) => prod.id !== id);    
           fs.writeFile(dataPath, JSON.stringify(newPelisList),  (error) => {
             console.log(error);
           });

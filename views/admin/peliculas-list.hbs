@@ -7,15 +7,20 @@
       {{#each peliculas}}
 
         <div class="col-md-4">
-          <div class="card">
+          <div class="card bg-dark theme">
             <img
               src="{{this.imageUrl}}"
               class="card-img-top"
               alt="{{this.title}}"
             />
             <div class="card-body">
-              <h5 class="card-title">{{this.title}} - ${{this.genero}}</h5>
-              <p class="card-text">{{this.description}}</p>
+              <h5 class="card-title">{{this.title}}</h5>
+            <h5 class="text-decoration-underline">Descripcion</h5>
+            <p class="text-sm">{{this.description}}</p>
+            <div class="d-flex justify-content-center">
+            <h6 class="">Estatus</h6>
+            <div class="status-circle {{#if this.isActive}} active {{else}} inactive {{/if}}"></div>
+            </div>
               <a
                 href="edit-pelicula/{{this.id}}?edit=true"
                 class="btn btn-primary"

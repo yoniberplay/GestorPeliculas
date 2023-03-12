@@ -1,53 +1,55 @@
 <main>
   <div class="card">
-    <div class="card-header">
+    <div class="card-header bg-dark theme">
       Formulario de pelicula
     </div>
-    <div class="card-body">
+    <div class="card-body bg-dark theme">
       <form method="POST" action="{{#if editMode}}/admin/edit-pelicula{{else}}/admin/add-pelicula{{/if}}">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" name="Title"
+          <input type="text" class="form-control bg-dark theme" id="title" name="Title"
             value="{{#if editMode}}{{pelicula.title}}{{/if}}" />
 
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">Image Url:</label>
-          <input type="text" class="form-control" id="image" name="ImageUrl"
+          <input type="text" class="form-control bg-dark theme" id="image" name="ImageUrl"
             value="{{#if editMode}}{{pelicula.imageUrl}}{{/if}}" />
 
         </div>
         <div class="mb-3">
           <label for="genero" class="form-label">Genero</label>
-          <select id="genero" name="genero" class="form-select" aria-label="Default select example">
+          <select id="genero" name="genero" class="form-select bg-dark theme" aria-label="Default select example">
             {{#if editMode}}
             <option value={{pelicula.genero}}>{{pelicula.genero}}</option>
             {{else}}
             {{/if}}
-            <option value="Comedia">Comedia</option>
             <option value="Accion">Accion</option>
-            <option value="Romance">Romance</option>
-            <option value="Aventura">Aventura</option>
-            <option value="Crimen">Crimen</option>
+            <option value="Terror">Terror</option>
+            <option value="Comedia">Comedia</option>
+            <option value="Suspenso">Suspenso </option>
+            <option value="Documentales">Documentales</option>
           </select>
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
           <textarea name="Description" id="description"
-            rows="5">{{#if editMode}}{{pelicula.description}}{{/if}}</textarea>
+            rows="5" class="bg-dark theme">{{#if editMode}}{{pelicula.description}}{{/if}}</textarea>
         </div>
 
         {{#if editMode}}
 
         <div class="mb-3">
+
           <label for="isActive" class="form-label">Estatus</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="isActive" value="false"  id="flexRadioDefault1" checked>
+          <div class="form-check d-flex justify-content-center">
             <label class="form-check-label" for="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="isActive" value="false"  id="flexRadioDefault1" checked>
               Inactivo
             </label>
           </div>
-          <div class="form-check">
+
+          <div class="form-check d-flex justify-content-center">
             <input class="form-check-input" type="radio" name="isActive" value=true id="flexRadioDefault2" {{#if
               pelicula.isActive}} checked {{/if}}>
             <label class="form-check-label" for="flexRadioDefault2">

@@ -2,27 +2,54 @@
 
   {{#if hasPeliculas}}
 
-    <h1>Movies list</h1>
+  <h1>Movies list</h1>
 
-    <div class="row">
+  <div class="row">
+
+    <div class="row w-75">
       {{#each peliculas}}
-
-        <div class="col-md-4">
-          <div class="card">
-            <img src="{{this.imageUrl}}" class="card-img-top" alt="{{this.title}}" />
-            <div class="card-body">
-              <h5 class="card-title">{{this.title}} - ${{this.price}}</h5>
-              <p class="card-text">{{this.description}}</p>
-              <button class="btn btn-primary">Add cart</button>
+      <div class="col-md-4">
+        <div class="card bg-dark">
+          <img src="{{this.imageUrl}}" class="card-img-top" alt="{{this.title}}" />
+          <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <h5 class="text-decoration-underline">Descripcion</h5>
+            <p class="text-sm">{{this.description}}</p>
+            <div class="d-flex justify-content-center">
+            <h6 class="">Estatus</h6>
+            <div class="status-circle {{#if this.isActive}} active {{else}} inactive {{/if}}"></div>
             </div>
+           
           </div>
         </div>
-
+      </div>
       {{/each}}
     </div>
+
+    <div class=" w-25">
+
+      <h2>Filtrar</h2>
+      <div class="list-group bg-dark">
+        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+          Filtrar por genero
+        </a>
+        <a href="peliculas/bygenero/Accion" class="list-group-item list-group-item-action bg-dark theme">Accion</a>
+        <a href="peliculas/bygenero/Terror" class="list-group-item list-group-item-action bg-dark theme">Terror</a>
+        <a href="peliculas/bygenero/Comedia" class="list-group-item list-group-item-action bg-dark theme">Comedia</a>
+        <a href="peliculas/bygenero/Suspenso" class="list-group-item list-group-item-action bg-dark theme">Suspenso</a>
+        <a href="peliculas/bygenero/Documentales" class="list-group-item list-group-item-action bg-dark theme">Documentales</a>
+
+
+      </div>
+
+    </div>
+
+
+
+  </div>
   {{else}}
 
-    <h1>No Movies found!</h1>
+  <h1>No Movies found!</h1>
 
   {{/if}}
 

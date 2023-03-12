@@ -3,7 +3,7 @@ const Peliculas = require("../models/Peliculas");
 exports.GetAddPelicula = (req, res, next) => {
   res.render("admin/save-peliculas", {
     pageTitle: "Add Pelicula",
-    AddPeliculaActive: true,
+    AddPeliculatActive: true,
     editMode: false,
   });
 };

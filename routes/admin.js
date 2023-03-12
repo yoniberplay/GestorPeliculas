@@ -10,6 +10,7 @@ router.post("/add-pelicula", adminController.PostAddPelicula);
 router.get("/peliculas", adminController.GetAdminPeliculas);
 
 router.get("/edit-pelicula/:peliculaId", adminController.GetEditPelicula); // route params , query params
+
 router.post("/edit-pelicula", adminController.PostEditPelicula);
 
 router.post("/delete-pelicula", adminController.DeletePelicula);

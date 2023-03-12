@@ -8,8 +8,9 @@ const peliculaController = require("../controllers/peliculaController");
 router.get("/", peliculaController.GetIndex);
 router.get("/peliculas", peliculaController.GetPeliculas);
 router.get("/peliculas/:peliculaId", peliculaController.GetPelicula);
-router.get("/orders", peliculaController.GetOrders);
-router.get("/cart", peliculaController.GetCart);
+router.get("/peliculas/bygenero/:genero", peliculaController.GetPeliculabygenero);
+// router.get("/orders", peliculaController.GetOrders);
+// router.get("/cart", peliculaController.GetCart);
 router.get("/checkout", peliculaController.GetCheckout);
 
 
